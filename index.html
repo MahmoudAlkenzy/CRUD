@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="./icons8-crud-64.png" />
+        <link rel="stylesheet" href="./css/all.min.css" />
+        <link rel="stylesheet" href="./css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./css/main.css" />
+        <title>Crud</title>
+    </head>
+    <body>
+        <!-------------------------- Start Nav --------------------------------->
+        <nav id="navBar" class="navbar navbar-expand-lg bg-body-tertiary p-3">
+            <div class="container-fluid flex-wrap">
+                <a
+                    class="navbar-brand fw-bolder text-uppercase fs-2 col-3 text-decoration-none py-1"
+                    href="#"
+                    >Crud</a
+                >
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                    id="navbarNav"
+                    class="row align-items-center collapse navbar-collapse col-9 justify-content-around g-3"
+                >
+                    <input
+                        class="search col-lg-4 py-2"
+                        id="search"
+                        name="search"
+                        type="text"
+                        onkeyup="searchData(this.value)"
+                        placeholder="Search By Title"
+                    />
+                    <button
+                        onclick="search(this.id)"
+                        id="searchByTitle"
+                        class="col-lg-2 btn px-1 py-2"
+                    >
+                        <i class="fa fa-search"></i> By Title
+                    </button>
+                    <button
+                        onclick="search(this.id)"
+                        id="searchByCategory"
+                        class="col-lg-2 btn px-1 py-2"
+                    >
+                        <i class="fa fa-search"></i> By Category
+                    </button>
+                    <button
+                        class="btn col-lg-2 px-1 py-2"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample"
+                        aria-controls="offcanvasExample"
+                    >
+                        New Product <span class="fa fa-plus"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!------------------------------------ end Nav Section ---------------------------------------->
+        <!------------------------------------ Start Home Section ---------------------------------------->
+        <section id="body" class="body py-4 text-center">
+            <div class="container">
+                <div id="deleteAll"></div>
+                <div class="row lel">
+                    <table id="tableScroll" class="w-100">
+                        <thead class="text-white text-uppercase">
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Taxes</th>
+                                <th>Ads</th>
+                                <th>Discount</th>
+                                <th>Total</th>
+                                <th>Category</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <!------------------------------------ End Home Section ---------------------------------------->
+        <!------------------------------------ Start sidebar Section ---------------------------------------->
+
+        <section
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel"
+        >
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                    Add New Product
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                    aria-controls="offcanvasExample"
+                ></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="conatiner">
+                    <form action="" class="py-1">
+                        <div class="row g-3 justify-content-around">
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                placeholder="Title"
+                                class="col-sm-11"
+                            />
+                            <input
+                                type="number"
+                                id="price"
+                                name="price"
+                                placeholder="Price"
+                                class="col-md-5"
+                                onkeyup="getTotal()"
+                            />
+                            <input
+                                type="number"
+                                id="taxes"
+                                name="taxes"
+                                placeholder="Taxces"
+                                onkeyup="getTotal()"
+                                class="col-md-5"
+                            />
+                            <input
+                                type="number"
+                                id="ads"
+                                name="ads"
+                                placeholder="Ads"
+                                onkeyup="getTotal()"
+                                class="col-md-5"
+                            />
+                            <input
+                                type="number"
+                                id="discount"
+                                name="discount"
+                                placeholder="Discount"
+                                onkeyup="getTotal()"
+                                class="col-md-5"
+                            />
+                            <span class="col-md-11"
+                                >Total:
+                                <span id="total" class="badge bg-danger">
+                                </span>
+                            </span>
+
+                            <input
+                                type="number"
+                                min="0"
+                                name="count"
+                                id="count"
+                                placeholder="count"
+                                class="col-md-11"
+                            />
+                            <input
+                                type="text"
+                                id="category"
+                                name="category"
+                                placeholder="Category"
+                                class="col-md-11"
+                            />
+                            <button
+                                id="submit"
+                                type="button"
+                                class="btn btn-primary col-4 py-2"
+                            >
+                                Create
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <button id="goUp" class="btn btn-primary rounded-circle">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <script src="./js/index.js"></script>
+    </body>
+</html>
